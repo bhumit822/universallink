@@ -1,0 +1,67 @@
+import UIKit
+// import Firebase
+import Flutter
+import Sentry // Make sure you import Sentry
+
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+  private var eventChannel: FlutterEventChannel?
+  
+  private let linkStreamHandler = LinkStreamHandler()
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+   
+    let controller = window.rootViewController as! FlutterViewController
+    eventChannel = FlutterEventChannel(name: "deeplink", binaryMessenger: controller)
+       
+    GeneratedPluginRegistrant.register(with: self)
+    eventChannel?.setStreamHandler(linkStreamHandler)
+      SentrySDK.start { options in
+        options.dsn = "https://1f9ea996dbe00e4b1f4f39e892c2503e@o4506534651691008.ingest.sentry.io/4506534654967808"
+        options.debug = true // Enabled debug when first installing is always helpful
+
+        // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+        // We recommend adjusting this value in production.
+        options.tracesSampleRate = 1.0
+
+    }
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+
+   
+  override func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    eventChannel?.setStreamHandler(linkStreamHandler)
+    return linkStreamHandler.handleLink(url.absoluteString)
+  }
+}
+
+class LinkStreamHandler:NSObject, FlutterStreamHandler {
+  
+  var eventSink: FlutterEventSink?
+  
+  // links will be added to this queue until the sink is ready to process them
+  var queuedLinks = [String]()
+  
+  func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+    self.eventSink = events
+    queuedLinks.forEach({ events($0) })
+    queuedLinks.removeAll()
+    return nil
+  }
+  
+  func onCancel(withArguments arguments: Any?) -> FlutterError? {
+    self.eventSink = nil
+    return nil
+  }
+  
+  func handleLink(_ link: String) -> Bool {
+    guard let eventSink = eventSink else {
+      queuedLinks.append(link)
+      return false
+    }
+    eventSink(link)
+    return true
+  }
+}

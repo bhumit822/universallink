@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-Shelf</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .content {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+  
+</head>
+<body>
+    <div class="content">
+        <button onclick="attemptOpenApp()">Open Topshelf App</button>
+    <p>Or <a href="https://apps.apple.com/">download the app</a>.</p>
+</div>
+<script type="text/javascript">
+    function attemptOpenApp() {
+        // Attempt to open the app with a timeout fallback
+        setTimeout(function() {
+
+
+
+            const userAgent = navigator.userAgent;
+
+            if (/Windows/i.test(userAgent)) {
+                return "Windows";
+            } else if (/Macintosh/i.test(userAgent)) {
+                return "macOS";
+            } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+                window.location = 'https://www.apple.com/app-store/';
+                return "iOS";
+            } else if (/Android/i.test(userAgent)) {
+                return "Android";
+            } else {
+                return "Unknown";
+            }
+           
+        }, 2500); // Adjust the timeout as needed
+        
+        window.location = 'tshelf:'; // Attempt to open your app
+    }
+    window.onload = attemptOpenApp;
+</script>
+</body>
+</html>
