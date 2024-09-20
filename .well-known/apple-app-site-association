@@ -1,15 +1,14 @@
 {
-    "applinks": {
-      "apps": [],
-      "details": [
-        {
-          "appID": "ZY98V56USG.com.app.topshelf.dev",
-          "paths": [
-           
-            "/user/*"
-          ]
-        }
-      ]
-    }
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "ZY98V56USG.com.main.topshelf",
+        "paths": [
+         
+          "/*"
+        ]
+      }
+    ]
   }
-  
+}

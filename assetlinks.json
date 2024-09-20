@@ -1,0 +1,13 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.app.topshelf",
+    "sha256_cert_fingerprints":
+    ["84:E0:81:A9:ED:C7:4E:2D:BF:21:79:04:84:11:37:50:F6:DE:AE:C1:32:91:D5:3E:A4:07:09:69:7C:98:74:9B"]
+  }
+}]
+
+
+
+

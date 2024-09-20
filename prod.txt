@@ -1,0 +1,29 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.main.topshelf",
+      "sha256_cert_fingerprints":
+      ["F5:BD:A5:E9:21:39:01:5C:E5:E0:F7:8C:44:AE:42:E1:C7:B2:FE:26:9F:35:8C:25:A3:A3:6B:85:B0:CE:1C:18"]
+    }
+  }]
+  
+
+
+
+
+  {
+    "applinks": {
+      "apps": [],
+      "details": [
+        {
+          "appID": "ZY98V56USG.com.main.topshelf",
+          "paths": [
+           
+            "/*"
+          ]
+        }
+      ]
+    }
+  }
+  

@@ -1,5 +1,7 @@
 {
-  "hosting": {
+  "hosting": [
+    {
+      "target":"dev",
     "public": "./",
     "ignore": [
       "firebase.json",
@@ -11,10 +13,74 @@
         "source": "/.well-known/apple-app-site-association",
         "destination": "/apple-app-site-association",
         "headers": [{"key": "Content-Type", "value": "application/json"}]
-      },  {
+      }, 
+       {
         "source": "/apple-app-site-association",
         "destination": "/apple-app-site-association",
         "headers": [{"key": "Content-Type", "value": "application/json"}]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      {
+        "source": "/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+    {"target":"prod",
+    
+    "public": "./",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "/.well-known/apple-app-site-association",
+        "destination": "/apple-app-site-association",
+        "headers": [{"key": "Content-Type", "value": "application/json"}]
+      }, 
+       {
+        "source": "/apple-app-site-association",
+        "destination": "/apple-app-site-association",
+        "headers": [{"key": "Content-Type", "value": "application/json"}]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      {
+        "source": "/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
       }
     ],
     "rewrites": [
@@ -24,4 +90,5 @@
       }
     ]
   }
+]
 }

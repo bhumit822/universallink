@@ -1,5 +1,27 @@
 {
   "projects": {
-    "default": "topshelf-d392c"
-  }
+    "dev": "topshelf-d392c",
+    "prod": "topshelf-prod"
+  },
+  "targets": {
+    "topshelf-prod": {
+      "hosting": {
+        "prod": [
+          "topshelf-app"
+        ],
+        "dev": [
+          "topshelf-d392c"
+        ]
+      }
+    },
+    "topshelf-d392c": {
+      "hosting": {
+        "dev": [
+          "topshelf-d392c"
+        ]
+      }
+    }
+  },
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

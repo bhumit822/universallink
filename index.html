@@ -3,59 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top-Shelf</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+    <title>TopShelf App</title>
+
+    <meta property="og:title" content="topshelf">
+    <meta property="og:description" content="Discover your next favorite beauty product with TopShelf, the must-have social media-based app that connects you to the latest and greatest in beauty through real-time reviews and recommendations from friends and influencers.">
+    <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/topshelf-d392c.appspot.com/o/logo.png?alt=media">
+    <meta property="og:url" content="https://topshelf-referral.web.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function redirectToStore() {
+            // Detect the user's platform
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                // Redirect to Google Play Store
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.main.topshelf';
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Redirect to Apple App Store
+                window.location.href = 'https://apps.apple.com/de/app/topshelf/id6504464782?l=en-GB';
+            } else {
+                // Default action (optional)
+                console.log('Platform not detected or not supported.');
+            }
         }
-        .content {
-            text-align: center;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
-  
+
+        // Execute the function when the page loads
+        window.onload = redirectToStore;
+
+    </script>
 </head>
 <body>
-    <div class="content">
-        <button onclick="attemptOpenApp()">Open Topshelf App</button>
-    <p>Or <a href="https://apps.apple.com/">download the app</a>.</p>
-</div>
-<script type="text/javascript">
-    function attemptOpenApp() {
-        // Attempt to open the app with a timeout fallback
-        setTimeout(function() {
+   
+   
+       
+        <!-- <p>Your ultimate digital library. Discover, organize, and read your favorite books all in one place.</p> -->
+        <div class="img-container">
 
-
-
-            const userAgent = navigator.userAgent;
-
-            if (/Windows/i.test(userAgent)) {
-                return "Windows";
-            } else if (/Macintosh/i.test(userAgent)) {
-                return "macOS";
-            } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-                window.location = 'https://www.apple.com/app-store/';
-                return "iOS";
-            } else if (/Android/i.test(userAgent)) {
-                return "Android";
-            } else {
-                return "Unknown";
-            }
-           
-        }, 2500); // Adjust the timeout as needed
+                <img src="Topshelf_Logo1_RGB_Blue.png" alt="topshelf App interface" >
+          
         
-        window.location = 'tshelf:'; // Attempt to open your app
-    }
-    window.onload = attemptOpenApp;
-</script>
+        
+        
+    </div>
 </body>
 </html>
